@@ -27,3 +27,15 @@ CREATE TABLE "KoinBx_POC".balances (
 	CONSTRAINT balances_pk PRIMARY KEY (id),
 	CONSTRAINT balances_unique UNIQUE (user_id, currency_symbol)
 );
+
+INSERT INTO "KoinBx_POC".balances (user_id,"currency_symbol",balance) VALUES
+	 ('user1','BTC'::"KoinBx_POC"."currency_symbol",84400),
+	 ('karthik','BTC'::"KoinBx_POC"."currency_symbol",99999),
+	 ('karthik','ETH'::"KoinBx_POC"."currency_symbol",99999),
+	 ('user1','ETH'::"KoinBx_POC"."currency_symbol",99999),
+	 ('user2','BTC'::"KoinBx_POC"."currency_symbol",99999),
+	 ('user2','ETH'::"KoinBx_POC"."currency_symbol",99999),
+	 ('user3','BTC'::"KoinBx_POC"."currency_symbol",99999),
+	 ('user3','ETH'::"KoinBx_POC"."currency_symbol",99999),
+	 ('user4','ETH'::"KoinBx_POC"."currency_symbol",99999),
+	 ('user4','BTC'::"KoinBx_POC"."currency_symbol",99999);
