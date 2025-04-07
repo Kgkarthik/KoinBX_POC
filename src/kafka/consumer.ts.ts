@@ -36,17 +36,15 @@ export const processOrder = async () => {
       }
       let updatedBalance;
 
-      const amount = Number(price) * Number(quantity);
-
       if (order_type === OrderType.BUY) {
-        if (!balance || Number(balance.balance) < amount) {
-          console.warn(`Insufficient funds for user ${user_id}`);
+        if (!balance) {
+          console.warn(`Invalid Balance for user ${user_id}`);
           order.status = OrderStatus.CANCELLED;
           order.updated_at = new Date();
           await orderRepo.save(order);
           return;
         }
-        balance.balance = Number(balance.balance) - amount;
+        balance.balance = Number(balance.balance) + Number(quantity);
         order.status = OrderStatus.CLOSED;
         order.updated_at = new Date();
         await orderRepo.save(order);
@@ -60,7 +58,7 @@ export const processOrder = async () => {
           await orderRepo.save(order);
           return;
         }
-        balance.balance = Number(balance.balance) + amount;
+        balance.balance = Number(balance.balance) - Number(quantity);
         order.status = OrderStatus.CLOSED;
         order.updated_at = new Date();
         await orderRepo.save(order);
