@@ -3,19 +3,16 @@ import { Order } from "../entities/Order";
 import { Balance } from "../entities/Balance"; 
 import { DataSource } from 'typeorm';
 import dotenv from 'dotenv';
-import path from "path";
 
 dotenv.config();
-const baseDir = path.join(__dirname, "..");
-console.log(path.join(baseDir, "entity", "*"));
-
+process.env.API_KEY
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: "localhost",
+  host: process.env.DB_HOST,
   port: 5432,
-  username: "postgres",
-  password: "admin",
-  database: "postgres",
+  username: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
   synchronize: false,
   logging: false,
   uuidExtension: "pgcrypto",

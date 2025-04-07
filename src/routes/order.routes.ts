@@ -2,8 +2,7 @@ import express from 'express';
 import {
   placeOrder,
   getAllOrders,
-  getOrderById,
-  cancelOrder
+  getOrderById
 } from '../controllers/orderController';
 
 const router = express.Router();
@@ -21,11 +20,6 @@ router.get('/', async (req, res) => {
 // Get a single order by ID
 router.get('/:id', async (req, res) => {
   await getOrderById(req, res);
-});
-
-// Cancel an order
-router.put('/:id/cancel', async (req, res) => {
-  await cancelOrder(req, res);
 });
 
 export default router;
