@@ -8,4 +8,6 @@ set up kafka locally
 
 run npm i to install dependencies 
 
+set env variables in .env
+
 run npm run start to start the application
