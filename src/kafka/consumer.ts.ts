@@ -61,6 +61,8 @@ export const processOrder = async () => {
           return;
         }
         balance.balance = Number(balance.balance) + amount;
+        order.status = OrderStatus.CLOSED;
+        order.updated_at = new Date();
         await orderRepo.save(order);
         updatedBalance = await repo.save(balance);
       }
